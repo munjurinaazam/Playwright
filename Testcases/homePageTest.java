@@ -15,7 +15,7 @@ public class homePageTest {
     @BeforeTest
     public void setUp() throws InterruptedException {
         pf=new playwrightFactory();
-        page= pf.intBrowser("chrome");
+//        page= pf.intBrowser("chrome");
         HomePage=new homePage(page);
         Thread.sleep(3000);
     }

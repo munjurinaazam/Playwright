@@ -2,11 +2,17 @@ package opencarttest.base;
 
 import com.microsoft.playwright.*;
 
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
+import java.util.Properties;
+
 public class playwrightFactory {
     private Playwright playwright;
     private Browser browser;
     private BrowserContext browserContext;
     private Page page;
+    Properties prop;
 
 
     public Page intBrowser(String browserName) {
@@ -31,5 +37,17 @@ public class playwrightFactory {
         page.navigate("https://naveenautomationlabs.com/opencart/");
         return page;
     }
-
+//
+    public Properties init_Prop(){
+        try {
+            FileInputStream ip=new FileInputStream("src/test/resources/configuration/configfile");
+            prop=new Properties();
+            prop.load(ip);
+        } catch (FileNotFoundException e) {
+            throw new RuntimeException(e);
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        return prop;
+    }
 }
